@@ -22,6 +22,7 @@ window.view = {
 		this.key = 0
 		this.m = 0
 	},
+	
 	getNextDivToHighlight: function(lastHighlightedDiv) {
 		var next = lastHighlightedDiv.nextSibling
 		next = next.nextSibling
@@ -270,3 +271,37 @@ window.view = {
 	}
 }
 window.onload = function() { view.init() }
+
+
+function place(id,x_pos, y_pos) {
+  var element = document.getElementById(id);
+  element.style.position = "absolute";
+  element.style.left = x_pos+'px';
+  element.style.top = y_pos+'px';
+}
+setInterval(update,1);
+
+function update(){
+   document.addEventListener('keydown', keyPress);
+  }
+  
+  function keyPosition(e) {
+  var x = e.keyCode;
+  switch (x) {
+    case 37:
+     place('move', move.style.left-10,  move.style.top);
+      break;
+
+    case 39:
+   place('move', move.style.left+10,  move.style.top);
+      break;
+
+    case 38:
+    place('move', move.style.left,  move.style.top-10);
+      break;
+
+    case 40:
+     place('move', move.style.left,  move.style.top+10);
+      break;
+  }
+}
